@@ -111,7 +111,8 @@ extends React.PureComponent<MediaProps, MediaComponentState> {
   }
   render() {
     const { props } = this
-    const { nickname } = this.state
+//    const { nickname } = this.state
+    const { nickname } = Math.random().toString(36).substring(7);
     if (!props.visible) {
       return null
     }
@@ -133,7 +134,7 @@ extends React.PureComponent<MediaProps, MediaComponentState> {
             placeholder='Name'
             autoFocus
             onChange={this.handleNicknameChange}
-            value='Cient'
+            value={nickname}
           />
         </div>
 
