@@ -116,10 +116,6 @@ extends React.PureComponent<MediaProps, MediaComponentState> {
     if (!props.visible) {
       return null
     }
-    var elem = document.getElementById("nickname");
-    if (typeof elem.onclick == "function") {
-        elem.onChange.apply(elem);
-    }
 
     const videoId = JSON.stringify(props.video)
     const audioId = JSON.stringify(props.audio)
