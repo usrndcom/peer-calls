@@ -75,7 +75,7 @@ extends React.PureComponent<MediaProps, MediaComponentState> {
     this.props.enumerateDevices()
   }
   handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    this.setState({ nickname: 'Client' })
+//    this.setState({ nickname: 'Client' })
     const { nickname } = this.state
     localStorage && (localStorage.nickname = nickname)
     event.preventDefault()
