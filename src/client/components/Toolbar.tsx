@@ -172,7 +172,7 @@ export default class Toolbar extends React.PureComponent<
 
     return (
       <React.Fragment>
-        <div className={'toolbar-other ' + className}>
+        {/* <div className={'toolbar-other ' + className}>
           <ToolbarButton
             className='copy-url'
             key='copy-url'
@@ -236,7 +236,7 @@ export default class Toolbar extends React.PureComponent<
             </div>
           </div>
 
-        </div>
+        </div> */}
 
         {isInCall && (
           <div className={'toolbar-call ' + className}>

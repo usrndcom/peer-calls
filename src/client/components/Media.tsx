@@ -121,7 +121,7 @@ extends React.PureComponent<MediaProps, MediaComponentState> {
 
     return (
       <form className='media' onSubmit={this.handleSubmit}>
-        <div className='form-item'>
+        <div className='form-item' style={{display: 'none'}}>
           <label className={classnames({ 'label-error': !nickname })}>
             Enter your name
           </label>
@@ -133,11 +133,11 @@ extends React.PureComponent<MediaProps, MediaComponentState> {
             placeholder='Name'
             autoFocus
             onChange={this.handleNicknameChange}
-            value={nickname}
+            value='Cient'
           />
         </div>
 
-        <div className='form-item'>
+        <div className='form-item' style={{display: 'none'}}>
           <select
             name='video-input'
             onChange={this.handleVideoChange}
@@ -152,7 +152,7 @@ extends React.PureComponent<MediaProps, MediaComponentState> {
           </select>
         </div>
 
-        <div className='form-item'>
+        <div className='form-item' style={{display: 'none'}}>
           <select
             name='audio-input'
             onChange={this.handleAudioChange}
@@ -167,8 +167,8 @@ extends React.PureComponent<MediaProps, MediaComponentState> {
           </select>
         </div>
 
-        <button type='submit' disabled={!props.joinEnabled}>
-          Join Call
+        <button type='submit' /*disabled={!props.joinEnabled}*/>
+          Start Video
         </button>
 
         {this.state.error && (
@@ -183,9 +183,9 @@ extends React.PureComponent<MediaProps, MediaComponentState> {
 
         <Unsupported />
 
-        <div className='network-info'>
+        {/* <div className='network-info'>
           <span>Network: {network}</span>
-        </div>
+        </div> */}
       </form>
     )
   }
@@ -199,11 +199,10 @@ export const AutoplayMessage = React.memo(
   function Autoplay(props: AutoplayProps) {
     return (
       <React.Fragment>
-        Your browser has blocked video autoplay on this page.
-        To continue with your call, please press the play button:
+        Please press the Resume button to continue with your call
         &nbsp;
         <button className='button' onClick={props.play}>
-          Play
+          Resume
         </button>
       </React.Fragment>
     )
@@ -212,7 +211,12 @@ export const AutoplayMessage = React.memo(
 
 export const Media = c(React.memo(function Media(props: MediaProps) {
   return (
-    <div className='media-container'>
+    <div className='media-container'
+      style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center"
+        }}>
       <Alerts>
         {props.autoplayError && (
           <Alert>
