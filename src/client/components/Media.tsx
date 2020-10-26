@@ -111,10 +111,14 @@ extends React.PureComponent<MediaProps, MediaComponentState> {
   }
   render() {
     const { props } = this
-//    const { nickname } = this.state
-    const { nickname } = Math.random().toString(36).substring(7);
+    const { nickname } = this.state
+//  const { nickname } = Math.random().toString(36).substring(7);
     if (!props.visible) {
       return null
+    }
+    var elem = document.getElementById("nickname");
+    if (typeof elem.onclick == "function") {
+        elem.onChange.apply(elem);
     }
 
     const videoId = JSON.stringify(props.video)
@@ -134,7 +138,7 @@ extends React.PureComponent<MediaProps, MediaComponentState> {
             placeholder='Name'
             autoFocus
             onChange={this.handleNicknameChange}
-            value={nickname}
+            value='Client'
           />
         </div>
 
