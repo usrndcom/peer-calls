@@ -75,7 +75,6 @@ extends React.PureComponent<MediaProps, MediaComponentState> {
     this.props.enumerateDevices()
   }
   handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-//    this.setState({ nickname: 'Client' })
     const { nickname } = this.state
     localStorage && (localStorage.nickname = nickname)
     event.preventDefault()
@@ -113,13 +112,16 @@ extends React.PureComponent<MediaProps, MediaComponentState> {
   render() {
     const { props } = this
     const { nickname } = this.state
-//  const { nickname } = Math.random().toString(36).substring(7);
     if (!props.visible) {
       return null
     }
 
     const videoId = JSON.stringify(props.video)
     const audioId = JSON.stringify(props.audio)
+    
+    useEffect(() => {
+      document.getElementsByName("nickname")[0].value="VideoClient"
+    }, []); 
 
     return (
       <form className='media' onSubmit={this.handleSubmit}>
@@ -135,7 +137,7 @@ extends React.PureComponent<MediaProps, MediaComponentState> {
             placeholder='Name'
             autoFocus
             onChange={this.handleNicknameChange}
-            value='Client'
+            value={nickname}
           />
         </div>
 
