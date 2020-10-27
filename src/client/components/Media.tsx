@@ -109,7 +109,14 @@ extends React.PureComponent<MediaProps, MediaComponentState> {
   handleNicknameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({ nickname: event.target.value })
   }
+  
+  componentDidMount() {
+        document.getElementsByName("nickname")[0].value="VideoClient"
+		this.setState({ nickname: "VideoClient" })
+    }
+  
   render() {
+  
     const { props } = this
     const { nickname } = this.state
     if (!props.visible) {
@@ -118,10 +125,6 @@ extends React.PureComponent<MediaProps, MediaComponentState> {
 
     const videoId = JSON.stringify(props.video)
     const audioId = JSON.stringify(props.audio)
-    
-    useEffect(() => {
-      document.getElementsByName("nickname")[0].value="VideoClient"
-    }, []); 
 
     return (
       <form className='media' onSubmit={this.handleSubmit}>
@@ -171,7 +174,7 @@ extends React.PureComponent<MediaProps, MediaComponentState> {
           </select>
         </div>
 
-        <button type='submit' /*disabled={!props.joinEnabled}*/>
+        <button type='submit' disabled={!props.joinEnabled}>
           Start Video
         </button>
 
@@ -187,9 +190,7 @@ extends React.PureComponent<MediaProps, MediaComponentState> {
 
         <Unsupported />
 
-        {/* <div className='network-info'>
-          <span>Network: {network}</span>
-        </div> */}
+       
       </form>
     )
   }
@@ -215,12 +216,7 @@ export const AutoplayMessage = React.memo(
 
 export const Media = c(React.memo(function Media(props: MediaProps) {
   return (
-    <div className='media-container'
-      style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center"
-        }}>
+    <div className='media-container'>
       <Alerts>
         {props.autoplayError && (
           <Alert>
