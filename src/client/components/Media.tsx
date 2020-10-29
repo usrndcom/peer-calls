@@ -216,7 +216,12 @@ export const AutoplayMessage = React.memo(
 
 export const Media = c(React.memo(function Media(props: MediaProps) {
   return (
-    <div className='media-container'>
+     <div className='media-container'
+      style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center"
+        }}>
       <Alerts>
         {props.autoplayError && (
           <Alert>
